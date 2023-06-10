@@ -1,10 +1,49 @@
 import { Component } from '@angular/core';
 
+import { PoMenuItem, PoToolbarAction, PoToolbarProfile } from '@po-ui/ng-components';
+import { AuthService } from './core/services/auth.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'portal-de-clientes';
+  readonly menus: Array<PoMenuItem> = [
+    { label: 'Dashboard', icon: 'po-icon po-icon-chart-area', link: '/dashboard' },
+    { label: 'Consultar Faturas', icon: 'po-icon po-icon-search', link: '/invoice'},
+    { label: 'Controle de Usuários', icon: 'po-icon po-icon-users', link: '/users' },
+    { label: 'Meu Cadastro', icon: 'po-icon po-icon-user', link: '/profile'},
+    // { label: 'Alterar senha', action: this.onClick.bind(this), icon: 'po-icon po-icon-user' },
+    { label: 'Acompanhar Entrega', icon: 'po-icon po-icon-truck', link: '/track-delivery'}
+  ];
+
+  public readonly profile: PoToolbarProfile = {
+    title: 'Nome do Usuário',
+    subtitle: 'Email',
+    avatar: ''
+  };
+
+  public readonly profileActions: PoToolbarAction[] = [
+    { icon: 'po-icon po-icon-user', label: 'Meus dados', url: 'profile' },
+    {
+      icon: 'po-icon po-icon-exit',
+      label: 'Sair',
+      type: 'danger',
+      separator: true,
+      action: () => this.authService.logout()
+    }
+  ];
+
+  user = false
+
+  constructor( private authService: AuthService, private router: Router) {
+  }
+
+  ngOnInit() {
+    if(localStorage.getItem('password')) {
+      this.user = true
+    }
+  }
 }
