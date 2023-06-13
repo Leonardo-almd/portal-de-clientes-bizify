@@ -1,0 +1,87 @@
+<po-modal
+  #modal
+  [p-title]="title"
+  [p-primary-action]="onPrimaryAction"
+  [p-secondary-action]="onSecondaryAction"
+>
+  <div class="po-row">
+    <form [formGroup]="form">
+      <po-input
+        p-required
+        [p-show-required]="true"
+        formControlName="name"
+        class="po-md-5"
+        name="name"
+        p-label="Nome"
+        p-clean
+      ></po-input>
+      <po-input
+        p-required
+        [p-show-required]="true"
+        formControlName="cgc"
+        class="po-md-5"
+        name="cgc"
+        p-mask="99999999999999"
+        p-label="CNPJ/CPF"
+        p-clean
+      ></po-input>
+      <po-email
+        p-required
+        [p-show-required]="true"
+        formControlName="email"
+        class="po-md-5"
+        p-clean
+        name="email"
+        p-label="E-mail"
+      ></po-email>
+      <po-input
+        formControlName="phone"
+        p-mask="(99) 99999?-9999"
+        class="po-md-5"
+        p-clean
+        name="phone"
+        p-label="Celular"
+      ></po-input>
+      <po-select
+        [p-required]="true"
+        [p-show-required]="true"
+        [formControl]="form.controls['acess']"
+        class="po-md-5"
+        p-clean
+        name="acess"
+        p-label="Tipo de acesso"
+        [p-options]="[
+          { label: 'Cliente', value: '1' },
+          { label: 'Vendedor', value: '2' },
+          { label: 'Supervisor', value: '3' },
+          { label: 'RH', value: '4' },
+          { label: 'Administrador', value: '5' }
+        ]"
+      ></po-select>
+      <po-divider></po-divider>
+      <po-password
+        p-required="passwordRequired"
+        [p-show-required]="passwordRequired"
+        formControlName="password"
+        class="po-md-5"
+        name="password"
+        [p-no-autocomplete]="true"
+        p-label="Senha"
+        [p-minlength]="6"
+        p-clean
+      >
+      </po-password>
+      <po-password
+        [p-minlength]="6"
+        [p-no-autocomplete]="true"
+        p-required="passwordRequired"
+        [p-show-required]="passwordRequired"
+        formControlName="confirmPassword"
+        p-clean
+        class="po-md-5"
+        name="confirmPassword"
+        p-label="Confirmar senha"
+      ></po-password>
+    </form>
+  </div>
+</po-modal>

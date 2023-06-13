@@ -1,4 +1,58 @@
-<po-page-default
-  p-title="Controle de Usuários"
- >
+<po-page-default p-title="Controle de Usuários">
+  <div class="po-row">
+    <po-widget
+      class="po-lg-3 po-mt-2"
+      [p-height]="200"
+      p-title="Total de usuários"
+    >
+      <div class="po-font-subtitle po-text-center">2.818</div>
+      <div class="po-text-center">Última atualização às {{generateLastUpdate()}}</div>
+    </po-widget>
+    <po-widget
+      class="po-lg-3 po-mt-2"
+      [p-height]="200"
+      p-title="Clientes"
+    >
+      <div class="po-font-subtitle po-text-center">2.100</div>
+      <div class="po-text-center">Última atualização às {{generateLastUpdate()}}</div>
+    </po-widget>
+    <po-widget
+      class="po-lg-3 po-mt-2"
+      [p-height]="200"
+      p-title="Vendedores"
+    >
+      <div class="po-font-subtitle po-text-center">700</div>
+      <div class="po-text-center">Última atualização às {{generateLastUpdate()}}</div>
+    </po-widget>
+    <po-widget
+      class="po-lg-3 po-mt-2"
+      [p-height]="200"
+      p-title="Supervisores"
+    >
+      <div class="po-font-subtitle po-text-center">18</div>
+      <div class="po-text-center">Última atualização às {{generateLastUpdate()}}</div>
+    </po-widget>
+  </div>
+  <div class="po-row" id="inputs">
+    <po-input
+        class="po-md-6"
+        name="search"
+        p-label="Pesquisar Usuário"
+        p-placeholder="Pesquisar..."
+        p-clean="true"
+        p-icon="po-icon po-icon-search"
+        >
+    </po-input>
+    <po-button
+        p-icon="po-icon po-icon-plus-circle"
+        p-label="Adicionar Novo"
+        (p-click)="createNewUser()">
+    </po-button>
+  </div>
+  <div class="po-row">
+    <po-table
+    [p-actions-right]="true"
+    [p-columns]="columns" [p-items]="items" [p-actions]="actions"> </po-table>
+  </div>
+  <app-form-users></app-form-users>
 </po-page-default>

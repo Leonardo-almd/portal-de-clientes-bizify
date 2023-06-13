@@ -9,13 +9,15 @@ import { PoMenuModule } from '@po-ui/ng-components';
 import { PoPageModule } from '@po-ui/ng-components';
 import { InvoiceComponent } from './components/invoice.component';
 import { InvoiceRoutingModule } from './invoice-routing.module';
-
-
+import { PoTableModule } from '@po-ui/ng-components';
+import { PoContainerModule } from '@po-ui/ng-components';
 
 @NgModule({
   declarations: [InvoiceComponent],
   imports: [
     InvoiceRoutingModule,
+    PoContainerModule,
+    PoTableModule,
     PoMenuModule,
     PoToolbarModule,
     PoPageModule,

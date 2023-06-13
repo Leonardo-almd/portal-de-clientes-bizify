@@ -9,6 +9,7 @@ import { PoMenuModule } from '@po-ui/ng-components';
 import { PoPageModule } from '@po-ui/ng-components';
 import { TrackComponent } from './components/track.component';
 import { TrackRoutingModule } from './track-routing.module';
+import { PoStepperModule } from '@po-ui/ng-components';
 
 
 
@@ -16,6 +17,7 @@ import { TrackRoutingModule } from './track-routing.module';
   declarations: [TrackComponent],
   imports: [
     TrackRoutingModule,
+    PoStepperModule,
     PoMenuModule,
     PoToolbarModule,
     PoPageModule,

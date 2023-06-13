@@ -1,4 +1,45 @@
-<po-page-default
-  p-title="Consultar Faturas"
- >
+<po-page-default p-title="Consultar Faturas">
+  <div class="po-row" id="search">
+    <po-container [p-no-border]="true">
+      <po-input
+        (keydown.enter)="onChangeSearch()"
+        (p-change)="onChangeSearch()"
+        class="po-md-5"
+        name="search"
+        p-label="Cliente"
+        p-placeholder="Pesquisar..."
+        p-clean="true"
+      >
+      </po-input>
+      <po-select
+        class="po-md-4"
+        name="reference"
+        p-label="Referência"
+        [p-options]="referencesOptions"
+        p-placeholder="Selecione uma opção:"
+        p-clean="true"
+      >
+      </po-select>
+      <po-select
+        class="po-md-4"
+        name="status"
+        p-label="Status"
+        [p-options]="statusOptions"
+        p-placeholder="Selecione uma opção:"
+        p-clean="true"
+      >
+      </po-select>
+      <po-input
+        (keydown.enter)="onChangeSearch()"
+        (p-change)="onChangeSearch()"
+        class="po-md-4"
+        name="search"
+        p-label="Pesquisar Invoice"
+        p-clean="true"
+      ></po-input>
+    </po-container>
+  </div>
+  <div class="po-row">
+    <po-table [p-columns]="columns"> </po-table>
+  </div>
 </po-page-default>

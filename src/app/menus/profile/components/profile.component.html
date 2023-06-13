@@ -1,4 +1,84 @@
-<po-page-default
-  p-title="Meu Cadastro"
- >
+<po-page-default p-title="Meu Cadastro">
+  <div class="po-row">
+    <po-tabs>
+      <po-tab [p-active]="true" p-label="Atualizar Cadastro">
+        <div class="po-row" id="form">
+          <div id="form-account">
+            <po-input
+              class="po-md-3"
+              name=""
+              p-label="CNPJ/CPF"
+              p-readonly="true"
+            ></po-input>
+            <po-input class="po-md-5" name="name" p-label="Nome"></po-input>
+            <po-input
+              class="po-md-5"
+              name="email"
+              p-label="E-mail/Login"
+              p-readonly="true"
+            ></po-input>
+            <po-input
+              class="po-md-5"
+              name="email"
+              p-label="E-mail secundário"
+            ></po-input>
+            <po-input
+              class="po-md-5"
+              name="phone"
+              p-label="Telefone"
+            ></po-input>
+          </div>
+          <div class="po-row" id="primary-action">
+            <po-button p-label="Salvar"></po-button>
+          </div>
+        </div>
+      </po-tab>
+      <po-tab p-label="Atualizar Senha">
+        <div class="po-row" id="form">
+          <div id="form-password">
+            <po-password
+              class="po-sm-4"
+              name="currentPassword"
+              p-clean
+              p-error-pattern="invalid password"
+              [p-no-autocomplete]="true"
+              p-label="Senha atual"
+              p-required
+            >
+            </po-password>
+            <po-password
+              [p-no-autocomplete]="true"
+              class="po-sm-4"
+              name="newPassword"
+              p-clean
+              p-error-pattern="invalid password"
+              p-label="Nova senha"
+              [p-minlength]="6"
+              p-required
+            >
+            </po-password>
+
+            <po-password
+              [p-no-autocomplete]="true"
+              class="po-sm-4"
+              name="confirmNewPassword"
+              p-clean
+              p-error-pattern="invalid password"
+              p-label="Confirme a nova senha"
+              [p-minlength]="6"
+              p-required
+            >
+            </po-password>
+          </div>
+          <div id="primary-action">
+            <po-button p-label="Salvar"></po-button>
+          </div>
+          <div class="po-row" id="reset-password">
+            <po-link (p-action)="test()" p-label="Esqueceu sua senha?"></po-link>
+          </div>
+        </div>
+      </po-tab>
+    </po-tabs>
+  </div>
+  <po-modal-password-recovery (p-submit)="onSendCodeRecovery($event)"> </po-modal-password-recovery>
 </po-page-default>

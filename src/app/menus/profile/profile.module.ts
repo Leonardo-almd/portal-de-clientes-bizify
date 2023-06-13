@@ -9,6 +9,10 @@ import { PoMenuModule } from '@po-ui/ng-components';
 import { PoPageModule } from '@po-ui/ng-components';
 import { ProfileComponent } from './components/profile.component';
 import { ProfileRoutingModule } from './profile-routing.module';
+import { PoTabsModule } from '@po-ui/ng-components';
+import { PoLinkModule } from '@po-ui/ng-components';
+
+
 
 
 
@@ -16,6 +20,8 @@ import { ProfileRoutingModule } from './profile-routing.module';
   declarations: [ProfileComponent],
   imports: [
     ProfileRoutingModule,
+    PoLinkModule,
+    PoTabsModule,
     PoMenuModule,
     PoToolbarModule,
     PoPageModule,

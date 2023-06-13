@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { PoMenuItem, PoToolbarAction, PoToolbarProfile } from '@po-ui/ng-components';
+import { PoDialogService, PoMenuItem, PoToolbarAction, PoToolbarProfile } from '@po-ui/ng-components';
 import { AuthService } from './core/services/auth.service';
 import { Router } from '@angular/router';
 
@@ -16,7 +16,16 @@ export class AppComponent {
     { label: 'Controle de Usuários', icon: 'po-icon po-icon-users', link: '/users' },
     { label: 'Meu Cadastro', icon: 'po-icon po-icon-user', link: '/profile'},
     // { label: 'Alterar senha', action: this.onClick.bind(this), icon: 'po-icon po-icon-user' },
-    { label: 'Acompanhar Entrega', icon: 'po-icon po-icon-truck', link: '/track-delivery'}
+    { label: 'Acompanhar Entrega', icon: 'po-icon po-icon-truck', link: '/track-delivery'},
+    {label: 'Sair', icon: 'po-icon po-icon-exit', action: () => {this.poDialog.confirm({
+      title: 'Sair',
+      message: 'Deseja realmente sair?',
+      confirm: () => {
+        this.authService.logout()
+      }
+    });
+
+    } }
   ];
 
   public readonly profile: PoToolbarProfile = {
@@ -38,7 +47,7 @@ export class AppComponent {
 
   user = false
 
-  constructor( private authService: AuthService, private router: Router) {
+  constructor( private authService: AuthService, private poDialog: PoDialogService) {
   }
 
   ngOnInit() {

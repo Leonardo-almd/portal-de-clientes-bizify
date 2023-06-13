@@ -1,0 +1,32 @@
+#form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#form-password{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#form-account{
+  margin: 50px 0px;
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: center;
+  // align-items: center;
+}
+
+#primary-action{
+  display: flex;
+  justify-content: center;
+  // margin: 10px;
+}
+
+#reset-password{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

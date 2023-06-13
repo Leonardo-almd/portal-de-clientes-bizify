@@ -1,4 +1,12 @@
 <po-page-default
   p-title="Acompanhar Entrega"
  >
+  <po-stepper (p-change-step)="activeStep()">
+    <po-step p-label="Pedido Realizado"></po-step>
+    <po-step p-label="Pedido Pago" ></po-step>
+    <po-step p-label="A Enviar"></po-step>
+    <po-step p-label="A Receber"></po-step>
+    <po-step p-label="A Avaliar"></po-step>
+  </po-stepper>
 </po-page-default>
+

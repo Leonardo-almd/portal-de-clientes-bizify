@@ -1,4 +1,112 @@
-<po-page-default
-  p-title="Dashboard"
- >
+<po-page-default p-title="Dashboard">
+  <div id="chart" class="po-row">
+    <po-container [p-no-border]="true">
+      <!-- <div class="po-row">
+        <po-select
+            class="po-md-4"
+            name="qtdMonths"
+            p-placeholder="Últimos meses:"
+            (p-change)="getUltimosMeses($event, 'amount')"
+            [p-options]="[
+    { label: '1', value: '1' },
+    { label: '2', value: '2' },
+    { label: '3', value: '3' },
+    { label: '4', value: '4' },
+    { label: '5', value: '5' },
+    { label: '6', value: '6' },
+    { label: '7', value: '7' },
+    { label: '8', value: '8' },
+    { label: '9', value: '9' }
+
+  ]">
+        </po-select>
+      </div> -->
+      <po-accordion>
+        <po-accordion-item p-label="Valor total das notas dos últimos meses">
+          <po-datepicker-range
+      class="po-md-6"
+      [p-clean]="true"
+      p-label="Selecione o período"
+      (p-change)="getFormattedMonths($event, 'amount')"
+      [p-max-date]="maxDate"
+      [p-start-date] = "startDate"
+      [p-end-date]="maxDate"
+    >
+    </po-datepicker-range>
+
+          <po-chart
+            class="po-md-12 po-mt-2"
+            [p-options]="optionsColumn"
+            [p-categories]="qtdMonthsAmount"
+            [p-series]="amountLastFewMonths"
+          >
+          </po-chart>
+        </po-accordion-item>
+      </po-accordion>
+    </po-container>
+    <po-container [p-no-border]="true">
+      <po-accordion>
+        <po-accordion-item p-label="Quantidade de notas dos últimos meses">
+          <po-datepicker-range
+      class="po-md-6"
+      [p-clean]="true"
+      p-label="Selecione o período"
+      (p-change)="getFormattedMonths($event, 'qtd')"
+      [p-max-date]="maxDate"
+      [p-start-date] = "startDate"
+      [p-end-date]="maxDate"
+    >
+    </po-datepicker-range>
+          <po-chart
+            class="po-md-12 po-mt-2"
+            [p-options]="optionsColumn"
+            [p-categories]="qtdMonthsNF"
+            [p-series]="qtdLastFewMonths"
+          >
+          </po-chart>
+        </po-accordion-item>
+      </po-accordion>
+      <!-- <div class="po-row">
+        <po-select
+            class="po-md-4"
+            name="qtdMonths"
+            p-placeholder="Últimos meses:"
+            (p-change)="getUltimosMeses($event, 'qtd')"
+            [p-options]="[
+    { label: '1', value: '1' },
+    { label: '2', value: '2' },
+    { label: '3', value: '3' },
+    { label: '4', value: '4' },
+    { label: '5', value: '5' },
+    { label: '6', value: '6' },
+    { label: '7', value: '7' },
+    { label: '8', value: '8' },
+    { label: '9', value: '9' }
+  ]">
+        </po-select>
+      </div> -->
+    </po-container>
+  </div>
+  <div>
+    <po-container [p-no-border]="true">
+      <po-input
+        (keydown.enter)="onChangeSearch()"
+        (p-change)="onChangeSearch()"
+        class="po-md-6"
+        name="search"
+        p-label="Cliente"
+        p-placeholder="Pesquisar..."
+        p-clean="true"
+        p-icon="po-icon po-icon-search"
+      >
+      </po-input>
+    </po-container>
+  </div>
+  <div class="po-row">
+    <po-container [p-no-border]="true">
+      <div class="po-font-text-bold">Últimas Faturas</div>
+      <po-divider> </po-divider>
+      <po-table [p-columns]="columns"> </po-table>
+    </po-container>
+  </div>
 </po-page-default>

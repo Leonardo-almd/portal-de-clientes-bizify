@@ -1,6 +1,12 @@
 <div class="po-wrapper">
   <div *ngIf="user">
-    <po-toolbar [p-profile]="profile" [p-profile-actions]="profileActions" p-title="Portal de Clientes"></po-toolbar>
+    <po-toolbar [p-profile]="profile" [p-profile-actions]="profileActions" p-title="Portal de Clientes">
+      <po-button
+          p-icon="po-icon-star-filled"
+          p-label="teste"
+          [p-small]="false">
+      </po-button>
+    </po-toolbar>
 
   <po-menu
     [p-menus]="menus"
