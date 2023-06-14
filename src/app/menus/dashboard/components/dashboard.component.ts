@@ -67,8 +67,8 @@ export class DashboardComponent {
     this.getFormattedMonths(objectDate, 'qtd - amount')
   }
 
-  public onChangeSearch() {
-    alert('enter');
+  public onChangeSearch(ev: string) {
+
   }
 
   public getFormattedMonths(obj: any, type: string): any {

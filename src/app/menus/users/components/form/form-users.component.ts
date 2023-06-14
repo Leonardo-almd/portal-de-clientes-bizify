@@ -1,6 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { PoModalAction, PoModalComponent, PoNotificationService } from '@po-ui/ng-components';
+import {
+  PoModalAction,
+  PoModalComponent,
+  PoNotificationService,
+} from '@po-ui/ng-components';
 
 @Component({
   selector: 'app-form-users',
@@ -16,8 +20,12 @@ export class FormUsersComponent {
   form: any = [];
   defaultFormValue: any;
   passwordRequired = true;
+  minLength = 11;
 
-  constructor(private formBuilder: FormBuilder, public poNotification: PoNotificationService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    public poNotification: PoNotificationService
+  ) {
     this.form = this.formBuilder.group({
       name: new FormControl(null, Validators.required),
       cgc: new FormControl(null, Validators.required),
@@ -32,12 +40,16 @@ export class FormUsersComponent {
 
   ngOnInit() {
     this.form.valueChanges.subscribe((newValue: any) => {
+      if (newValue.cgc.length <= 11) {
+        this.minLength = 11;
+      } else {
+        this.minLength = 14;
+      }
       if (!this.form.invalid) {
         this.onPrimaryAction.disabled = false;
       } else {
         this.onPrimaryAction.disabled = true;
       }
-
     });
   }
 
@@ -69,16 +81,15 @@ export class FormUsersComponent {
 
   readonly onPrimaryAction: PoModalAction = {
     action: () => {
-      if(this.form.value.password || this.form.value.confirmPassword){
-        if (this.form.value.password == this.form.value.confirmPassword){
+      if (this.form.value.password || this.form.value.confirmPassword) {
+        if (this.form.value.password == this.form.value.confirmPassword) {
           this.poModal.close();
         } else {
-          this.poNotification.warning('A senha deve ser igual nos dois campos')
+          this.poNotification.warning('A senha deve ser igual nos dois campos');
         }
       } else {
-        this.poModal.close()
+        this.poModal.close();
       }
-
     },
     label: 'Salvar',
     disabled: true,

@@ -1,6 +1,20 @@
 <po-page-default
   p-title="Acompanhar Entrega"
  >
+ <div class="po-row">
+  <po-input
+     class="po-md-4"
+     name="search"
+     p-label="Pesquise o pedido"
+     p-placeholder="Núm. do pedido"
+     p-clean="true"
+     p-icon="po-icon po-icon-search"
+     (p-change)="searchOrder($event)"
+     (keydown.enter)="searchOrder($event.target['value'])"
+    >
+ </po-input>
+ </div>
+ <div class="po-row" *ngIf="search">
   <po-stepper (p-change-step)="activeStep()">
     <po-step p-label="Pedido Realizado"></po-step>
     <po-step p-label="Pedido Pago" ></po-step>
@@ -8,5 +22,7 @@
     <po-step p-label="A Receber"></po-step>
     <po-step p-label="A Avaliar"></po-step>
   </po-stepper>
+ </div>
+
 </po-page-default>
 

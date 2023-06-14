@@ -1,26 +1,6 @@
 <po-page-default p-title="Dashboard">
   <div id="chart" class="po-row">
     <po-container [p-no-border]="true">
-      <!-- <div class="po-row">
-        <po-select
-            class="po-md-4"
-            name="qtdMonths"
-            p-placeholder="Últimos meses:"
-            (p-change)="getUltimosMeses($event, 'amount')"
-            [p-options]="[
-    { label: '1', value: '1' },
-    { label: '2', value: '2' },
-    { label: '3', value: '3' },
-    { label: '4', value: '4' },
-    { label: '5', value: '5' },
-    { label: '6', value: '6' },
-    { label: '7', value: '7' },
-    { label: '8', value: '8' },
-    { label: '9', value: '9' }
-
-  ]">
-        </po-select>
-      </div> -->
       <po-accordion>
         <po-accordion-item p-label="Valor total das notas dos últimos meses">
           <po-datepicker-range
@@ -66,32 +46,12 @@
           </po-chart>
         </po-accordion-item>
       </po-accordion>
-      <!-- <div class="po-row">
-        <po-select
-            class="po-md-4"
-            name="qtdMonths"
-            p-placeholder="Últimos meses:"
-            (p-change)="getUltimosMeses($event, 'qtd')"
-            [p-options]="[
-    { label: '1', value: '1' },
-    { label: '2', value: '2' },
-    { label: '3', value: '3' },
-    { label: '4', value: '4' },
-    { label: '5', value: '5' },
-    { label: '6', value: '6' },
-    { label: '7', value: '7' },
-    { label: '8', value: '8' },
-    { label: '9', value: '9' }
-  ]">
-        </po-select>
-      </div> -->
     </po-container>
   </div>
   <div>
     <po-container [p-no-border]="true">
       <po-input
-        (keydown.enter)="onChangeSearch()"
-        (p-change)="onChangeSearch()"
+        (p-change-model)="onChangeSearch($event)"
         class="po-md-6"
         name="search"
         p-label="Cliente"

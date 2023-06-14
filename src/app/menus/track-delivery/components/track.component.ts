@@ -9,6 +9,8 @@ import { PoStepperComponent, PoStepperStatus } from '@po-ui/ng-components';
 export class TrackComponent {
   @ViewChild(PoStepperComponent) poStepperComponent?: PoStepperComponent;
 
+  search: any = null
+
   readonly steps = [
     { label: 'Pedido Realizado', status: PoStepperStatus.Default },
     { label: 'Pedido Pago', status: PoStepperStatus.Active },
@@ -18,8 +20,14 @@ export class TrackComponent {
   ];
 
 
-  ngOnInit() {
+  // ngOnInit() {
+  //   setTimeout(() => this.activeStep());
+  // }
+
+  public searchOrder(ev: string) {
+    console.log(ev)
     setTimeout(() => this.activeStep());
+    this.search = ev
   }
 
 

@@ -3,44 +3,60 @@
     <po-tabs>
       <po-tab [p-active]="true" p-label="Atualizar Cadastro">
         <div class="po-row" id="form">
-          <div id="form-account">
+          <form [formGroup]="form" id="form-account">
             <po-input
               class="po-md-3"
-              name=""
+              formControlName="cgc"
+              p-mask="99999999999999"
+              name="cgc"
               p-label="CNPJ/CPF"
               p-readonly="true"
             ></po-input>
-            <po-input class="po-md-5" name="name" p-label="Nome"></po-input>
             <po-input
+              formControlName="name"
+              p-clean
               class="po-md-5"
+              name="name"
+              p-label="Nome"
+            ></po-input>
+            <po-email
+              class="po-md-5"
+              formControlName="email"
               name="email"
               p-label="E-mail/Login"
               p-readonly="true"
-            ></po-input>
-            <po-input
+            ></po-email>
+            <po-email
               class="po-md-5"
-              name="email"
+              p-clean
+              formControlName="emailSecondary"
+              name="emailSecondary"
               p-label="E-mail secundário"
-            ></po-input>
+            ></po-email>
             <po-input
               class="po-md-5"
+              p-clean
+              formControlName="phone"
+              p-mask="(99) 99999?-9999"
               name="phone"
               p-label="Telefone"
             ></po-input>
-          </div>
+          </form>
           <div class="po-row" id="primary-action">
-            <po-button p-label="Salvar"></po-button>
+            <po-button p-label="Salvar" [p-disabled]="form.invalid"></po-button>
           </div>
         </div>
       </po-tab>
       <po-tab p-label="Atualizar Senha">
         <div class="po-row" id="form">
-          <div id="form-password">
+          <form [formGroup]="formPassword" id="form-password">
             <po-password
               class="po-sm-4"
               name="currentPassword"
+              formControlName="currentPassword"
               p-clean
-              p-error-pattern="invalid password"
+              p-error-pattern="Mínimo de seis caracteres"
+              [p-minlength]="6"
               [p-no-autocomplete]="true"
               p-label="Senha atual"
               p-required
@@ -48,10 +64,11 @@
             </po-password>
             <po-password
               [p-no-autocomplete]="true"
+              formControlName="newPassword"
+              p-error-pattern="Mínimo de seis caracteres"
               class="po-sm-4"
               name="newPassword"
               p-clean
-              p-error-pattern="invalid password"
               p-label="Nova senha"
               [p-minlength]="6"
               p-required
@@ -61,24 +78,33 @@
             <po-password
               [p-no-autocomplete]="true"
               class="po-sm-4"
+              formControlName="confirmNewPassword"
               name="confirmNewPassword"
+              p-error-pattern="Mínimo de seis caracteres"
               p-clean
-              p-error-pattern="invalid password"
               p-label="Confirme a nova senha"
               [p-minlength]="6"
               p-required
             >
             </po-password>
-          </div>
+          </form>
           <div id="primary-action">
-            <po-button p-label="Salvar"></po-button>
+            <po-button
+              [p-disabled]="formPassword.invalid"
+              (p-click)="savePassword()"
+              p-label="Salvar"
+            ></po-button>
           </div>
           <div class="po-row" id="reset-password">
-            <po-link (p-action)="test()" p-label="Esqueceu sua senha?"></po-link>
+            <po-link
+              (p-action)="passwordRecovery()"
+              p-label="Esqueceu sua senha?"
+            ></po-link>
           </div>
         </div>
       </po-tab>
     </po-tabs>
   </div>
-  <po-modal-password-recovery (p-submit)="onSendCodeRecovery($event)"> </po-modal-password-recovery>
+  <po-modal-password-recovery (p-submit)="onSendCodeRecovery($event)">
+  </po-modal-password-recovery>
 </po-page-default>

@@ -22,6 +22,8 @@
         class="po-md-5"
         name="cgc"
         p-mask="99999999999999"
+        [p-minlength]="minLength"
+        p-error-pattern="CNPJ/CPF inválido"
         p-label="CNPJ/CPF"
         p-clean
       ></po-input>
@@ -63,6 +65,7 @@
         p-required="passwordRequired"
         [p-show-required]="passwordRequired"
         formControlName="password"
+        p-error-pattern="Mínimo de seis caracteres"
         class="po-md-5"
         name="password"
         [p-no-autocomplete]="true"
@@ -73,6 +76,7 @@
       </po-password>
       <po-password
         [p-minlength]="6"
+        p-error-pattern="Mínimo de seis caracteres"
         [p-no-autocomplete]="true"
         p-required="passwordRequired"
         [p-show-required]="passwordRequired"

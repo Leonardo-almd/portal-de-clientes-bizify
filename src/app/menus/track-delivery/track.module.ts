@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { PoModule } from '@po-ui/ng-components';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PoFieldModule } from '@po-ui/ng-components';
 import { PoButtonModule } from '@po-ui/ng-components';
@@ -10,6 +9,7 @@ import { PoPageModule } from '@po-ui/ng-components';
 import { TrackComponent } from './components/track.component';
 import { TrackRoutingModule } from './track-routing.module';
 import { PoStepperModule } from '@po-ui/ng-components';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -17,6 +17,7 @@ import { PoStepperModule } from '@po-ui/ng-components';
   declarations: [TrackComponent],
   imports: [
     TrackRoutingModule,
+    CommonModule,
     PoStepperModule,
     PoMenuModule,
     PoToolbarModule,
