@@ -45,14 +45,13 @@ export class AppComponent {
     }
   ];
 
-  user = false
 
-  constructor( private authService: AuthService, private poDialog: PoDialogService) {
+  constructor( public authService: AuthService, private poDialog: PoDialogService) {
   }
 
   ngOnInit() {
-    if(localStorage.getItem('password')) {
-      this.user = true
+    if(localStorage.getItem('user')){
+      this.authService.$authenticationState.next(true)
     }
   }
 }

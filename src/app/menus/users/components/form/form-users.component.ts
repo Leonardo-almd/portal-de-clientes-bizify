@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/core/services/auth.service';
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import {
@@ -24,7 +25,8 @@ export class FormUsersComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    public poNotification: PoNotificationService
+    public poNotification: PoNotificationService,
+    public authService: AuthService
   ) {
     this.form = this.formBuilder.group({
       name: new FormControl(null, Validators.required),
@@ -40,7 +42,7 @@ export class FormUsersComponent {
 
   ngOnInit() {
     this.form.valueChanges.subscribe((newValue: any) => {
-      if (newValue.cgc.length <= 11) {
+      if (newValue.cgc && newValue.cgc.length <= 11) {
         this.minLength = 11;
       } else {
         this.minLength = 14;
@@ -97,6 +99,7 @@ export class FormUsersComponent {
 
   readonly onSecondaryAction: PoModalAction = {
     action: () => {
+      console.log(this.authService.getUser + 'user')
       this.poModal.close();
     },
     label: 'Cancelar',

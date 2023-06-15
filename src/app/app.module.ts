@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { PoTemplatesModule } from '@po-ui/ng-templates';
+import { PoStorageModule } from '@po-ui/ng-storage';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PoTemplatesModule } from '@po-ui/ng-templates';
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot([]),
-    PoTemplatesModule
+    PoTemplatesModule,
+    PoStorageModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

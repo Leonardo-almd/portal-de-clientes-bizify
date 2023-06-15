@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { PoDialogService, PoModalComponent } from '@po-ui/ng-components';
 import { PoModalPasswordRecovery, PoModalPasswordRecoveryComponent, PoPageLoginCustomField, PoPageLoginLiterals, PoPageLoginRecovery } from '@po-ui/ng-templates';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,15 +19,11 @@ export class LoginComponent {
     submitLabel: 'Entrar'
   };
 
-  public readonly environmentName: PoPageLoginCustomField = {
-    placeholder: 'Informe o nome do ambiente',
-    property: 'environmentName'
-  };
-
 
   constructor(
     private poDialog: PoDialogService,
-    private router: Router
+    private router: Router,
+    public authService: AuthService
   ) {
 
   }
@@ -43,9 +40,6 @@ export class LoginComponent {
   }
 
   public onRecoveryPassword(): void {
-    if (!this.environmentName.value) {
-      return this.poDialog.alert({ message: 'Informe o nome do ambiente', title: 'Atenção' });
-    }
     this.poModalPasswordRecovery?.open();
   }
 

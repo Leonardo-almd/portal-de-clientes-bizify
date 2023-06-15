@@ -4,7 +4,6 @@ p-secondary-logo="../../../assets/Bizify Quadrado Roxo Marca.png"
 [p-literals]="customLiterals"
 [p-languages]="[]"
 [p-recovery]="this.onRecoveryPassword.bind(this)"
-[p-custom-field]="environmentName"
-(p-login-submit)="loginSubmit($event)"></po-page-login>
+(p-login-submit)="authService.login($event)"></po-page-login>
 
 <po-modal-password-recovery (p-submit)="onSendCodeRecovery($event)"> </po-modal-password-recovery>
